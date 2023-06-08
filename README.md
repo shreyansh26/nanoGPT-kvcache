@@ -1,7 +1,7 @@
 # Additions over nanoGPT
 Using a KV Cache helps speed up inference since we don't have to do attention re-computation over the entire generated sequence every time to generate the next tokens.
 
-I did not want to change any of the existing code and hence have added a couple files with the suffix `_kvcache`. Here is a brief description - 
+I have added a couple files with the suffix `_kvcache` - 
 * [sample_kvcache.py](sample_kvcache.py)
 * [model_kvcache.py](model_kvcache.py)
 
