@@ -25,6 +25,8 @@ Time taken - 49.37 seconds (without Flash Attention on T4 GPU)
 
 Time taken - 12.85 seconds (without Flash Attention on T4 GPU)
 
+***Significantly faster!!*** 🔥
+
 # nanoGPT
 
 ![nanoGPT](assets/nanogpt.jpg)
