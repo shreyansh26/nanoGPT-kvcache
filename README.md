@@ -1,3 +1,29 @@
+# Additions over nanoGPT
+Using a KV Cache helps speed up inference since we don't have to do attention re-computation over the entire generated sequence every time to generate the next tokens.
+
+I did not want to change any of the existing code and hence have added a couple files with the suffix `_kvcache`. Here is a brief description - 
+* [sample_kvcache.py](sample_kvcache.py)
+* [model_kvcache.py](model_kvcache.py)
+
+## Usage
+
+**Original nanoGPT inference**  
+`python sample_kvcache.py --init_from=gpt2 --start="What is the answer to life, the universe, and everything?" --num_samples=1 --max_new_tokens=100 --temperature=1.0`
+
+**nanoGPT inference with KV Cache**  
+`python sample_kvcache.py --init_from=gpt2 --start="What is the answer to life, the universe, and everything?" --num_samples=1 --max_new_tokens=100 --temperature=1.0 --use_kvcache=True`
+
+The time difference is quite evident when generating long sequences. For generating 1000 tokens -
+
+**Original nanoGPT inference**  
+`python sample_kvcache.py --init_from=gpt2 --start="What is the answer to life, the universe, and everything?" --num_samples=1 --max_new_tokens=1000 --temperature=1.0`
+
+Time taken - 49.37 seconds (without Flash Attention on T4 GPU)
+
+**nanoGPT inference with KV Cache**  
+`python sample_kvcache.py --init_from=gpt2 --start="What is the answer to life, the universe, and everything?" --num_samples=1 --max_new_tokens=1000 --temperature=1.0 --use_kvcache=True`
+
+Time taken - 12.85 seconds (without Flash Attention on T4 GPU)
 
 # nanoGPT
 
